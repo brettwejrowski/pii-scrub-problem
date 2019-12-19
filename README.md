@@ -34,14 +34,16 @@ should return:
 You will need to implement a command line executable that takes two arguments: a text file with a list of senstive fields and a JSON file of user data to scrub. Calling `./scrub sensitive_fields.txt input.json ` should output a scrubbed JSON version of `input.json` with the keys in `senstive_fields.txt` "scrubbed".
 
 Any valid JSON input should be able to be handled. Value types for senstive keys should be handled as follows:
-  - String: replace alphanumeric characters with "*"
-  - Number: convert to string, replace alphanumeric characters with "*"
-  - Boolean: replace value with "-"
-  - Array: each value of the array should be evaluated as described by other field types
-  - Object: if the key matches a senstive field, all values of the nested object should be scrubbed as described by other field types. If the nested object does not correspond to a senstive key, each key/value pair of the nested object should be evaluated as described by other field types
-  - null/empty: value should be unmodified
+  - `String`: replace alphanumeric characters with "*"
+  - `Number`: convert to string and replace alphanumeric characters with "*"
+  - `Boolean`: replace entire value with "-"
+  - `Array`: each value of the array should be evaluated as described by other field types
+  - `Object`: if the key matches a senstive field, all values of the nested object should be scrubbed as described by other field types. If the nested object does not correspond to a senstive key, each key/value pair of the nested object should be evaluated as described by other field types
+  - `null`: value should be unmodified
 
 
 ## Tests
 
-A handful of example test "scrubs" are in the `/tests/` directory. Each subdirectory has an `input.json`, `sensitive_fields.txt`, and corresponding `output.json` that is expected. *You should spend no more than 1.5 hours on this problem, and prioritize the test examples by prefixed number*. You are not expected to have completed all tests; simply work through accomodating them incrementally in the time allotted.
+A handful of example test "scrubs" are in the `/tests/` directory. Each subdirectory has an `input.json`, `sensitive_fields.txt`, and corresponding `output.json` that is expected.
+
+**You should spend no more than 1.5 hours on this problem, and prioritize the test examples by prefixed number**. You are not expected to have completed all tests; simply work through accomodating them incrementally in the time allotted.
